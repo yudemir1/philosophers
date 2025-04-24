@@ -6,7 +6,7 @@
 /*   By: yudemir <yudemir@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/22 05:54:29 by yudemir           #+#    #+#             */
-/*   Updated: 2025/04/24 17:26:14 by yudemir          ###   ########.fr       */
+/*   Updated: 2025/04/24 17:28:18 by yudemir          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int is_num(char *str)
 }
 
 int	ft_atoi(const char *str)
-{		//00000000000000000000000000042 hala hatalı çalışıyor.
+{		//00000000000000000000000000042 düzeldi ama -000000000000000000000000000042 hatalı.
 	long long	res;
 	int			negative;
 	char		*str2;
