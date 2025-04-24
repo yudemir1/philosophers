@@ -6,7 +6,7 @@
 /*   By: yudemir <yudemir@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/22 05:35:11 by yudemir           #+#    #+#             */
-/*   Updated: 2025/04/24 05:21:11 by yudemir          ###   ########.fr       */
+/*   Updated: 2025/04/24 16:49:06 by yudemir          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,9 @@ void	parse(int ac, char **av, t_rules *rules)
 	i = 1;
 	k = 0;
 	null_check(av);
-	arr = malloc(ac * sizeof(int) + 1);
+	arr = malloc(ac * sizeof(int));
+	if (!arr)
+		return ;
 	while (av[i] && is_num(av[i]))
 	{
 		split = ft_split(av[i], ' ');
