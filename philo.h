@@ -6,7 +6,7 @@
 /*   By: yudemir <yudemir@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/22 05:33:51 by yudemir           #+#    #+#             */
-/*   Updated: 2025/04/24 04:01:20 by yudemir          ###   ########.fr       */
+/*   Updated: 2025/04/24 05:22:08 by yudemir          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 # include <unistd.h>
 # include <stdio.h> 
 
-typedef struct s_rules
+typedef struct s_rules//eğer struct'ın içindeki herhangi bir variable'ın türü değişirse parse bozulucak çünkü while içinde arr'e atıyoruz hepsini.
 {
 	int 	number_of_philosophers;
 	int 	time_to_die;

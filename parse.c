@@ -6,7 +6,7 @@
 /*   By: yudemir <yudemir@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/22 05:35:11 by yudemir           #+#    #+#             */
-/*   Updated: 2025/04/24 05:05:40 by yudemir          ###   ########.fr       */
+/*   Updated: 2025/04/24 05:21:11 by yudemir          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void	parse(int ac, char **av, t_rules *rules)
 		split = ft_split(av[i], ' ');
 		j = 0;
 		while (split[j])
-			arr[k++] = ft_atoi_hard(split[j++]);
+			arr[k++] = ft_atoi(split[j++]);//tüm kuralları sırasıyla arr'e atıyoruz zaten hepsi int 
 		free_split(split);
 		i++;
 	}
