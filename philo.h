@@ -6,7 +6,7 @@
 /*   By: yudemir <yudemir@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/22 05:33:51 by yudemir           #+#    #+#             */
-/*   Updated: 2025/04/25 02:59:16 by yudemir          ###   ########.fr       */
+/*   Updated: 2025/04/25 03:29:32 by yudemir          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,6 @@ int	is_num(char *str, int *arr);
 char	**ft_split(char const *s, char c);
 void	ft_max_int_error(int *arr, char **split);
 void	ft_error();
-void	ft_error_arr(int *arr);
 char	*ft_trim_num(const char *str);
 int		ft_strlen(const char	*str);
 

@@ -6,7 +6,7 @@
 /*   By: yudemir <yudemir@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/25 02:46:15 by yudemir           #+#    #+#             */
-/*   Updated: 2025/04/25 02:56:56 by yudemir          ###   ########.fr       */
+/*   Updated: 2025/04/25 03:29:30 by yudemir          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,3 @@ void	ft_error()
 	exit(1);
 }
 
-void	ft_error_arr(int *arr)
-{
-	free(arr);
-	printf("Error");
-	exit(1);
-}

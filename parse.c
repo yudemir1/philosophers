@@ -6,7 +6,7 @@
 /*   By: yudemir <yudemir@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/22 05:35:11 by yudemir           #+#    #+#             */
-/*   Updated: 2025/04/25 02:51:14 by yudemir          ###   ########.fr       */
+/*   Updated: 2025/04/25 03:30:48 by yudemir          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,20 +58,23 @@ void	null_check(char **av)
 	}
 }
 
-void	assign_rules(int *arr, t_rules **rules) // buraya gelene kadar zaten kontrol edicek.
+void	assign_rules(int *arr, t_rules **rules)
 {
-	t_rules	*tmp;
+    t_rules	*tmp;
 
-	tmp = *rules;
-	tmp = malloc(sizeof(t_rules));
-	if (!(*rules))
-		ft_error_arr(arr);
-	tmp->number_of_philosophers = arr[0];
-	tmp->time_to_die = arr[1];
-	tmp->time_to_eat = arr[2];
-	tmp->time_to_sleep = arr[3];
-	if (arr[4])
-		tmp->eat_counter = arr[4];
-	else
-		tmp->eat_counter = -1;
+    tmp = malloc(sizeof(t_rules));
+    if (!tmp)
+    {
+		free(arr);
+        ft_error();
+    }
+    tmp->number_of_philosophers = arr[0];
+    tmp->time_to_die = arr[1];
+    tmp->time_to_eat = arr[2];
+    tmp->time_to_sleep = arr[3];
+    if (arr[4])
+        tmp->eat_counter = arr[4];
+    else
+        tmp->eat_counter = -1;
+    *rules = tmp;
 }
