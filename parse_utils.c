@@ -6,27 +6,39 @@
 /*   By: yudemir <yudemir@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/22 05:54:29 by yudemir           #+#    #+#             */
-/*   Updated: 2025/04/24 17:28:18 by yudemir          ###   ########.fr       */
+/*   Updated: 2025/04/25 02:59:11 by yudemir          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-int is_num(char *str)
+int	is_num(char *str, int *arr)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (str[i])
 	{
-		if (str[i] < '0' || str[i] > '9')
-			return (0);
+		if (str[i] == '+' || str[i] == '-')
+		{
+			if (!(str[i + 1]) || (str[i + 1] < '0' || str[i + 1] > '9')
+				|| (i > 0 && (str[i - 1] != ' ')))
+			{
+				free(arr); // satır sayısı çok uzarsa, ft_error'a arr gönderilip error'un içinde freelenebilir.
+				ft_error();
+			}
+		}
+		else if (str[i] != ' ' && (str[i] < '0' || str[i] > '9'))
+		{
+			free(arr);
+			ft_error();
+		}
 		i++;
 	}
 	return (1);
 }
 
-int	ft_atoi(const char *str)
+int	ft_atoi(const char *str, int *arr, char **split)
 {		//00000000000000000000000000042 düzeldi ama -000000000000000000000000000042 hatalı.
 	long long	res;
 	int			negative;
@@ -36,7 +48,7 @@ int	ft_atoi(const char *str)
 	res = 0;
 	str2 = ft_trim_num(str);
 	if (ft_strlen(str2) > 13)
-		ft_max_int_error();
+		ft_max_int_error(arr ,split);
 	while (*str2 && (*str2 == ' ' || (*str2 >= 9 && *str2 <= 13)))
 		++str2;
 	if (*str2 == '-')
@@ -49,7 +61,7 @@ int	ft_atoi(const char *str)
 		++str2;
 	}
 	if (res * negative > 2147483647 || res * negative < -2147483648)
-		ft_max_int_error();
+		ft_max_int_error(arr, split);
 	free(str2);
 	return (res * negative);
 }
@@ -67,7 +79,7 @@ void	free_split(char **split)
 	free(split);
 }
 
-char	*ft_trim_num(char *str)//sayıların önündeki 0'ları silecek. *YAPILACAK: -000000042 parselanmıyor
+char	*ft_trim_num(const char *str)//sayıların önündeki 0'ları silecek. *YAPILACAK: -000000042 parselanmıyor -0000
 {
 	int		i;
 	char	*retval;
@@ -75,7 +87,7 @@ char	*ft_trim_num(char *str)//sayıların önündeki 0'ları silecek. *YAPILACAK
 
 	i = 0;
 	k = 0;
-	while (str[i] && str[i] == '0')
+	while (str[i] && (str[i] == '0' || str[0] == '-'))
 		i++;
 	if (!str[i])//sayı sadece 0'lardna oluşuyorsa tek sıfır döndürürüz.
 	{
@@ -91,11 +103,11 @@ char	*ft_trim_num(char *str)//sayıların önündeki 0'ları silecek. *YAPILACAK
 		return (NULL);
 	while (str[i])
 		retval[k++] = str[i++];
-	retval[k] = '\0'
+	retval[k] = '\0';
 	return (retval);
 }
 
-int	ft_strlen(char	*str)
+int	ft_strlen(const char *str)
 {
 	int	i;
 

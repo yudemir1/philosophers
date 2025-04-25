@@ -1,24 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   philo.c                                            :+:      :+:    :+:   */
+/*   errors.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yudemir <yudemir@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/22 05:42:51 by yudemir           #+#    #+#             */
-/*   Updated: 2025/04/25 02:45:55 by yudemir          ###   ########.fr       */
+/*   Created: 2025/04/25 02:46:15 by yudemir           #+#    #+#             */
+/*   Updated: 2025/04/25 02:56:56 by yudemir          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-int main(int ac, char **av)
+void	ft_max_int_error(int *arr, char **split)
 {
-	t_rules *rules;
-	
-	rules = NULL;
-	parse(ac, av, &rules);
-	print_arguments(rules);
+	free_split(split);
+	free(arr);
+	printf("Error occured while parsing arguments.");
+	exit(1);
+}
 
-	free(rules);
+void	ft_error()
+{
+	printf("Error");
+	exit(1);
+}
+
+void	ft_error_arr(int *arr)
+{
+	free(arr);
+	printf("Error");
+	exit(1);
 }

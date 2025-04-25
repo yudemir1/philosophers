@@ -1,24 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   philo.c                                            :+:      :+:    :+:   */
+/*   test_helpers.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yudemir <yudemir@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/22 05:42:51 by yudemir           #+#    #+#             */
-/*   Updated: 2025/04/25 02:45:55 by yudemir          ###   ########.fr       */
+/*   Created: 2025/04/25 02:31:18 by yudemir           #+#    #+#             */
+/*   Updated: 2025/04/25 02:59:32 by yudemir          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-int main(int ac, char **av)
+void	print_arguments(t_rules *rules)
 {
-	t_rules *rules;
-	
-	rules = NULL;
-	parse(ac, av, &rules);
-	print_arguments(rules);
-
-	free(rules);
+	printf("%d\n%d\n%d\n%d\n%d\n", rules->eat_counter, rules->number_of_philosophers, rules->time_to_die, rules->time_to_eat, rules->time_to_sleep);
 }
