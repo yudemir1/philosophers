@@ -29,6 +29,12 @@ typedef struct s_rules//eğer struct'ın içindeki herhangi bir variable'ın tü
 	int		eat_counter;
 } t_rules;
 
+typedef struct sim
+{
+	pthread_t philos[200];
+	
+}	t_sim;
+
 void	parse(int ac, char **av, t_rules **rules);
 void	print_arguments(t_rules *rules);
 void	free_split(char **split);
