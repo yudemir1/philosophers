@@ -6,7 +6,7 @@
 /*   By: yudemir <yudemir@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/22 05:35:11 by yudemir           #+#    #+#             */
-/*   Updated: 2025/04/25 03:30:48 by yudemir          ###   ########.fr       */
+/*   Updated: 2025/05/02 02:00:52 by yudemir          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ void	parse(int ac, char **av, t_rules **rules)
 		free_split(split);
 		i++;
 	}
+	argument_count_check(k, arr); // argüman sayısını kontrol ediyoruz.
 	assign_rules(arr, rules);
 	free(arr);
 }
@@ -77,4 +78,13 @@ void	assign_rules(int *arr, t_rules **rules)
     else
         tmp->eat_counter = -1;
     *rules = tmp;
+}
+
+void	argument_count_check(int k, int *arr)
+{
+	if (k < 4 || k > 5)
+	{
+		free(arr);
+		ft_custom_error("Error: Invalid number of arguments.");
+	}
 }

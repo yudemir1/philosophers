@@ -6,7 +6,7 @@
 /*   By: yudemir <yudemir@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/25 02:46:15 by yudemir           #+#    #+#             */
-/*   Updated: 2025/04/25 03:40:49 by yudemir          ###   ########.fr       */
+/*   Updated: 2025/05/02 01:59:47 by yudemir          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,12 @@ void	ft_max_int_error(int *arr, char **split)
 void	ft_error()
 {
 	printf("Error\n");
+	exit(1);
+}
+
+void	ft_custom_error(char *str)
+{
+	printf("%s\n", str);
 	exit(1);
 }
 
