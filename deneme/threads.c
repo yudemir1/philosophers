@@ -74,20 +74,21 @@ void* thread_function_wo_mtuex(void* arg) {
 }
 
 int main() {
-    pthread_t thread1, thread2, thread3;
+    pthread_t threads[2];
     int id1 = 1, id2 = 2, id3 = 3;
     
+
     // Zamanı başlat
     start_time = get_current_time_ms();
     printf("Main: Program başladı (0.00 ms)\n");
     
     // 3 thread oluştur
-    pthread_create(&thread1, NULL, thread_function, &id1);
-    pthread_create(&thread2, NULL, thread_function, &id2);
+    pthread_create(&threads[0], NULL, thread_function, &id1);
+    pthread_create(&threads[1], NULL, thread_function, &id2);
     
     // Thread'lerin bitmesini bekle
-    pthread_join(thread1, NULL);
-    pthread_join(thread2, NULL);
+    pthread_join(threads[0], NULL);
+    pthread_join(threads[1], NULL);
     
     printf("Main: Tüm thread'ler tamamlandı. Son counter=%d (%.2f ms)\n", 
            counter, get_current_time_ms() - start_time);
