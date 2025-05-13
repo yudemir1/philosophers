@@ -12,7 +12,7 @@
 
 #include "philo.h"
 
-int	is_num(char *str, int *arr)
+int	is_num(char *str)
 {
 	int	i;
 
@@ -23,19 +23,13 @@ int	is_num(char *str, int *arr)
 		{
 			if (!(str[i + 1]) || (str[i + 1] < '0' || str[i + 1] > '9')
 				|| (i > 0 && (str[i - 1] != ' ')))
-			{
-				free(arr); // satır sayısı çok uzarsa, ft_error'a arr gönderilip error'un içinde freelenebilir.
-				ft_error();
-			}
+				return (ft_error(), 1);
 		}
 		else if (str[i] != ' ' && (str[i] < '0' || str[i] > '9'))
-		{
-			free(arr);
-			ft_error();
-		}
+			return (ft_error(), 1);
 		i++;
 	}
-	return (1);
+	return (0);
 }
 
 int	ft_atoi(const char *str, int *arr, char **split)

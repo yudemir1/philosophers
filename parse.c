@@ -30,7 +30,7 @@ void	parse(int ac, char **av, t_rules **rules)
 	arr = malloc(ac * sizeof(int));
 	if (!arr)
 		return ;
-	while (av[i] && is_num(av[i], arr))
+	while (av[i] && !is_num(av[i]))
 	{
 		split = ft_split(av[i], ' ');
 		j = 0;
@@ -53,7 +53,7 @@ void	null_check(char **av)
 	{
 		if (av[i][0] == '\0')
 		{
-			ft_error();
+			return (ft_error());
 		}
 		i++;
 	}
@@ -67,7 +67,7 @@ void	assign_rules(int *arr, t_rules **rules)
     if (!tmp)
     {
 		free(arr);
-        ft_error();
+        return (ft_error());
     }
     tmp->number_of_philosophers = arr[0];
     tmp->time_to_die = arr[1];
@@ -85,6 +85,6 @@ void	argument_count_check(int k, int *arr)
 	if (k < 4 || k > 5)
 	{
 		free(arr);
-		ft_custom_error("Error: Invalid number of arguments.");
+		return (ft_custom_error("Error: Invalid number of arguments."));
 	}
 }

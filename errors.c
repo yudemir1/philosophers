@@ -17,18 +17,21 @@ void	ft_max_int_error(int *arr, char **split)
 	free_split(split);
 	free(arr);
 	printf("Error occured while parsing arguments.\n");
-	exit(1);
+}
+
+void	ft_error_arr(int *arr)
+{
+	free(arr);
+	printf("Error\n");
 }
 
 void	ft_error()
 {
 	printf("Error\n");
-	exit(1);
 }
 
 void	ft_custom_error(char *str)
 {
 	printf("%s\n", str);
-	exit(1);
 }
 

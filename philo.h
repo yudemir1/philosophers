@@ -41,13 +41,16 @@ void	free_split(char **split);
 int	ft_atoi(const char *str, int *arr, char **split);
 void	null_check(char **av);
 void	assign_rules(int *arr, t_rules **rules);
-int	is_num(char *str, int *arr);
+int	is_num(char *str);
 char	**ft_split(char const *s, char c);
 void	ft_max_int_error(int *arr, char **split);
 void	ft_error();
 char	*ft_trim_num(const char *str);
 int		ft_strlen(const char	*str);
 void	ft_custom_error(char *str);
+void	argument_count_check(int k, int *arr);
+void	ft_error_arr(int *arr);
+
 
 
 #endif
