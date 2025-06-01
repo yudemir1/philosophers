@@ -6,7 +6,7 @@
 /*   By: yudemir <yudemir@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/16 18:59:55 by yudemir           #+#    #+#             */
-/*   Updated: 2025/06/01 17:29:03 by yudemir          ###   ########.fr       */
+/*   Updated: 2025/06/01 17:54:53 by yudemir          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,9 +41,15 @@ static int	init_philos(t_data *data)
 		data->philos[i].left_fork = &data->forks[i];
 		data->philos[i].right_fork = &data->forks[(i + 1) % data->rules.number_of_philosophers];
 		data->philos[i].data = data;
+		data->philos[i].last_meal_lock = malloc(sizeof(pthread_mutex_t));
+		if (!data->philos[i].last_meal_lock)
+			return (print_error("Error: Initializing last meal lock."));
+		data->philos[i].meal_lock = malloc(sizeof(pthread_mutex_t));
+		if (!data->philos[i].meal_lock)
+			return (print_error("Error: Initializing meal lock."));
 		pthread_mutex_init(data->philos[i].last_meal_lock, NULL);
 		pthread_mutex_init(data->philos[i].meal_lock, NULL);
-		if (pthread_create(&data->philos[i].philo, NULL, activity, &data->philos[i]))
+		if (pthread_create(&data->philos[i].philo, NULL, &activity, &data->philos[i]))
 			return (print_error("Error: Initializing philos."));
 		i++;
 	}
@@ -93,7 +99,7 @@ int	init(t_data *data, char **av)
 	data->monitor_t = malloc(sizeof(pthread_t));
 	if (!data->monitor_t)
 		return (print_error("Error: While initializing monitor thread."));
-	if (pthread_create(data->monitor_t, NULL, *start_monitor, data) != 0)
+	if (pthread_create(data->monitor_t, NULL, &start_monitor, data) != 0)
 		return (print_error("Error: While initializing monitor thread."));
 	if (init_rules(&data->rules, av) != 0)
 		return (print_error("Error: While initialiazing rules."));
