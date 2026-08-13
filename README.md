@@ -8,6 +8,8 @@ A 42 School project implementing the classic **Dining Philosophers Problem** in 
 
 The program simulates this scenario with one thread per philosopher plus a monitor thread that watches for philosophers who haven't eaten in time.
 
+<img width="708" height="728" alt="image" src="https://github.com/user-attachments/assets/bb755f86-ad8c-413d-a91a-951ba7e52a90" />
+
 ## Build
 
 ```sh
